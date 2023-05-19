@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = 'ViewComponents for the Optics Design System'
   spec.homepage = 'https://github.com/RoleModel/optics_view_components'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 3.1.0'
 
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
@@ -26,8 +26,12 @@ Gem::Specification.new do |spec|
   end
   spec.require_paths = ['lib']
 
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_runtime_dependency     'view_component', ['> 2.0', '< 4.0']
+
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rspec-rails'
+  spec.add_development_dependency 'sprockets'
+  spec.add_development_dependency 'sprockets-rails'
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

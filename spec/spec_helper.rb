@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
-require 'optics/view_components'
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../demo/config/environment', __dir__)
+
+require 'pry'
+require 'rspec/rails'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

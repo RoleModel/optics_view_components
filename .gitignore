@@ -9,3 +9,10 @@
 
 # rspec failure tracking
 .rspec_status
+
+# Logfiles and tempfiles
+*.log
+log/
+tmp/
+!log/.keep
+!tmp/.keep

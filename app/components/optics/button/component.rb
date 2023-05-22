@@ -19,8 +19,10 @@ module Optics
 
       def call
         build_button do
-          leading_icon
-          label
+          capture do
+            concat leading_icon
+            concat label
+          end
         end
       end
 

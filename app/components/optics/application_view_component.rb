@@ -31,6 +31,8 @@ module Optics
     end
 
     def initialize(**attributes)
+      super
+
       initialize_instance_variables(required_attributes, attributes) do |key, _default|
         raise ArgumentError, "Missing keyword: :#{key}"
       end

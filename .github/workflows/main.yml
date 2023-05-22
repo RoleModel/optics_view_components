@@ -18,6 +18,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set up node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 19
+        cache-dependency-path: 'demo/yarn.lock'
+    - name: Build assets
+      run: |
+        cd demo
+        yarn
+        yarn build:css
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:

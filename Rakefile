@@ -7,6 +7,8 @@ RSpec::Core::RakeTask.new(:spec)
 
 require 'rubocop/rake_task'
 
-RuboCop::RakeTask.new
+RuboCop::RakeTask.new(:rubocop) do |t|
+  t.options = ['--fail-level', 'warning', '--display-only-fail-level-offenses']
+end
 
 task default: %i[spec rubocop]

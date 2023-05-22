@@ -14,7 +14,17 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+Add to `config/application.rb`:
+
+```
+require 'optics/view_components'
+require 'optics/view_components/engine'
+```
+
+Use in a view:
+```
+<%= render(Optics::Button::Component.new(label: 'Hello')) %>
+```
 
 ## Development
 

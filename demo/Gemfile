@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 
 gem 'bootsnap', require: false
-gem 'importmap-rails'
+gem 'cssbundling-rails', '~> 1.1'
 gem 'puma', '~> 6.0'
 gem 'sprockets-rails'
 
@@ -18,3 +18,4 @@ end
 group :development do
   gem 'web-console'
 end
+

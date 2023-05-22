@@ -7,12 +7,18 @@
 /spec/reports/
 /tmp/
 
+# Ignore development files
+/demo/app/assets/builds/*
+!/demo/app/assets/builds/.keep
+/demo/node_modules
+/demo/public/assets
+
 # rspec failure tracking
 .rspec_status
 
 # Logfiles and tempfiles
 *.log
-log/
-tmp/
-!log/.keep
-!tmp/.keep
+demo/log/
+demo/tmp/
+!demo/log/.keep
+!demp/tmp/.keep

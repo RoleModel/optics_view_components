@@ -1,45 +1,59 @@
 # frozen_string_literal: true
 
-module Icon
-  class Component < ApplicationViewComponent
-    SIZES = %w[normal large x-large].freeze
-    WEIGHTS = %w[light normal semi-bold bold].freeze
-    EMPHASES = %w[low normal high].freeze
+module Optics
+  module Icon
+    class Component < ApplicationViewComponent
+      SIZES = %w[normal large x-large].freeze
+      WEIGHTS = %w[light normal semi-bold bold].freeze
+      EMPHASES = %w[low normal high].freeze
 
-    requires :name
-    accepts :data
-    accepts :emphasis, default: 'normal'
-    accepts :filled, default: false
-    accepts :size, default: 'normal'
-    accepts :title
-    accepts :weight, default: 'normal'
+      requires :name
+      accepts :data
+      accepts :emphasis, default: 'normal'
+      accepts :filled, default: false
+      accepts :size, default: 'normal'
+      accepts :title
+      accepts :weight, default: 'normal'
 
-    def classes
-      class_names(
-        'material-symbols-outlined',
-        size_class,
-        weight_class,
-        emphasis_class,
-        'icon--filled': filled
-      ).join(' ')
-    end
+      def call
+        content_tag(
+          :span,
+          class: classes,
+          'aria-label': title,
+          title:,
+          data:
+        ) do
+          name
+        end
+      end
 
-    def size_class
-      return if size == 'normal'
+      def classes
+        class_names(
+          'material-symbols-outlined',
+          size_class,
+          weight_class,
+          emphasis_class,
+          'icon--filled': filled
+        ).join(' ')
+      end
 
-      "icon--#{size}"
-    end
+      def size_class
+        return if size == 'normal'
 
-    def weight_class
-      return if weight == 'normal'
+        "icon--#{size}"
+      end
 
-      "icon--weight-#{weight}"
-    end
+      def weight_class
+        return if weight == 'normal'
 
-    def emphasis_class
-      return if emphasis == 'normal'
+        "icon--weight-#{weight}"
+      end
 
-      "icon--#{emphasis}-emphasis"
+      def emphasis_class
+        return if emphasis == 'normal'
+
+        "icon--#{emphasis}-emphasis"
+      end
     end
   end
 end

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class ApplicationViewComponentPreview < ViewComponent::Preview
+class Optics::ApplicationViewComponentPreview < ViewComponent::Preview
   include ApplicationHelper
 end

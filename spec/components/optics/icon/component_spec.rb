@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Icon::Component do
+RSpec.describe Optics::Icon::Component do
   subject { page }
 
   context 'filled icon with title' do
-    let(:component) { Icon::Component.new(name: 'settings', title: 'Settings', filled: true) }
+    let(:component) { described_class.new(name: 'settings', title: 'Settings', filled: true) }
 
     it 'renders' do
       render_inline(component)
@@ -18,7 +18,7 @@ RSpec.describe Icon::Component do
   end
 
   context 'outlined icon with size, weight, and emphasis' do
-    let(:component) { Icon::Component.new(name: 'plus', size: 'x-large', weight: 'bold', emphasis: 'high') }
+    let(:component) { described_class.new(name: 'plus', size: 'x-large', weight: 'bold', emphasis: 'high') }
 
     it 'renders' do
       render_inline(component)

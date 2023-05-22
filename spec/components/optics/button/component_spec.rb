@@ -29,7 +29,7 @@ RSpec.describe Optics::Button::Component do
     end
 
     context 'custom' do
-      let(:component) { Button::Component.new(label: 'New Project', size: 'large', variant: 'primary') }
+      let(:component) { described_class.new(label: 'New Project', size: 'large', variant: 'primary') }
 
       it do
         render_inline(component)
@@ -41,7 +41,7 @@ RSpec.describe Optics::Button::Component do
 
     context 'preview' do
       it do
-        render_preview(:default, params: { label: 'Hello' }, from: Button::Preview)
+        render_preview(:default, params: { label: 'Hello' }, from: Optics::Button::Preview)
 
         is_expected.to have_css 'button'
       end
@@ -84,7 +84,7 @@ RSpec.describe Optics::Button::Component do
 
     context 'preview' do
       it do
-        render_preview(:default, params: { url: '/', label: 'Press Me' }, from: Button::Preview)
+        render_preview(:default, params: { url: '/', label: 'Press Me' }, from: Optics::Button::Preview)
 
         is_expected.to have_css 'a'
       end

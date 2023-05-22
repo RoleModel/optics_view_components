@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency     'view_component', ['> 2.0', '< 4.0']
 
+  spec.add_development_dependency 'capybara'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'sprockets'

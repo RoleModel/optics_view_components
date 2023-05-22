@@ -7,7 +7,7 @@ module Optics
       STYLES = %w[default primary secondary delete].freeze
 
       renders_one :leading_icon, lambda { |name:, size: 'normal'|
-        Icon::Component.new(name:, size:)
+        Optics::Icon::Component.new(name:, size:)
       }
 
       accepts :label
@@ -16,6 +16,13 @@ module Optics
       accepts :size, default: 'medium'
       accepts :variant, default: 'default'
       accepts :url
+
+      def call
+        build_button do
+          leading_icon
+          label
+        end
+      end
 
       def build_button(&)
         return link_to(url, class: classes, **@attributes, &) if url

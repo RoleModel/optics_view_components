@@ -11,14 +11,14 @@ module Optics
       # @param variant select {{ ::Button::Component::STYLES }}
       # @param url text
       def default( # rubocop:disable Metrics/ParameterLists
-            border: true,
-            icon: false,
-            id: nil,
-            label: 'Default',
-            size: 'normal',
-            variant: 'default',
-            url: nil
-          )
+        border: true,
+        icon: false,
+        id: nil,
+        label: 'Default',
+        size: 'normal',
+        variant: 'default',
+        url: nil
+      )
         render(Button::Component.new(
                  border:,
                  icon:,
@@ -26,7 +26,7 @@ module Optics
                  label:,
                  size:,
                  variant:,
-                 url:,
+                 url:
                ))
       end
     end

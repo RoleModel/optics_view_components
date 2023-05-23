@@ -17,13 +17,22 @@ If bundler is not being used to manage dependencies, install the gem by executin
 Add to `config/application.rb`:
 
 ```
-require 'optics/view_components'
+require 'view_component'
 require 'optics/view_components/engine'
 ```
 
 Use in a view:
 ```
 <%= render(Optics::Button::Component.new(label: 'Hello')) %>
+```
+
+### Add previews to your application's [Lookbook](https://github.com/ViewComponent/lookbook)
+
+Add to `config/application.rb`:
+
+```
+    config.lookbook.component_paths << Optics::ViewComponents::Engine.root.join('app/components/optics')
+    config.view_component.preview_paths << Optics::ViewComponents::Engine.root.join('previews')
 ```
 
 ## Development

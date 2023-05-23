@@ -41,7 +41,7 @@ RSpec.describe Optics::Button::Component do
 
     context 'preview' do
       it do
-        render_preview(:default, params: { label: 'Hello' }, from: Optics::Button::Preview)
+        render_preview(:default, params: { label: 'Hello' }, from: Optics::ButtonPreview)
 
         is_expected.to have_css 'button'
       end
@@ -84,7 +84,7 @@ RSpec.describe Optics::Button::Component do
 
     context 'preview' do
       it do
-        render_preview(:default, params: { url: '/', label: 'Press Me' }, from: Optics::Button::Preview)
+        render_preview(:default, params: { url: '/', label: 'Press Me' }, from: Optics::ButtonPreview)
 
         is_expected.to have_css 'a'
       end

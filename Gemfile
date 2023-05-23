@@ -9,6 +9,7 @@ gem 'cssbundling-rails', '~> 1.1'
 gem 'puma', '~> 6.0'
 gem 'sprockets-rails'
 
+gem 'lookbook'
 gem 'optics_view_components', path: '../'
 
 group :development, :test do

@@ -31,7 +31,10 @@ Use in a view:
 Add to `config/application.rb`:
 
 ```
-    config.lookbook.component_paths << Optics::ViewComponents::Engine.root.join('app/components/optics')
+    if config.respond_to?(:lookbook)
+      config.lookbook.component_paths << Optics::ViewComponents::Engine.root.join('app/components')
+    end
+
     config.view_component.preview_paths << Optics::ViewComponents::Engine.root.join('previews')
 ```
 

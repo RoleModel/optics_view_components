@@ -27,9 +27,9 @@ module Optics
       end
 
       def build_button(&)
-        return link_to(url, class: classes, **@attributes, &) if url
+        return link_to(url, class: classes, **@attributes.except(:class), &) if url
 
-        tag.button(class: classes, **@attributes, &)
+        tag.button(class: classes, **@attributes.except(:class), &)
       end
 
       def button_class
@@ -40,6 +40,7 @@ module Optics
 
       def classes
         class_names(
+          @attributes[:class],
           button_class,
           size_class,
           'btn--icon': icon,

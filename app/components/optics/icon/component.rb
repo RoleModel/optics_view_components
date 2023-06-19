@@ -21,7 +21,8 @@ module Optics
           class: classes,
           'aria-label': title,
           title:,
-          data:
+          data:,
+          **@attributes.except(:class)
         ) do
           name
         end
@@ -30,6 +31,7 @@ module Optics
       def classes
         class_names(
           'material-symbols-outlined',
+          @attributes[:class],
           size_class,
           weight_class,
           emphasis_class,

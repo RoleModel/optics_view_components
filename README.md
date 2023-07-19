@@ -43,6 +43,13 @@ If you need a custom layout add:
     config.view_component.default_preview_layout = 'preview'
 ```
 
+To use the shorthand `component 'optics/icon'` syntax, add this to `app/helpers/application_helper.rb`:
+```
+  def component(name, *args, **kwargs, &)
+    render(name.camelize.constantize::Component.new(*args, **kwargs), &)
+  end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -19,7 +19,7 @@ module Optics
 
       def call
         build_button do
-          label || content
+          content || label
         end
       end
 

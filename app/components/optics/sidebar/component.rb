@@ -50,21 +50,12 @@ module Optics
       end
 
       class SidebarContent < ApplicationViewComponent
-        renders_many :buttons, Optics::Button::Component
-
         accepts :position, default: 'center'
-        
+
         def call
-          concat(
-            content_tag(
-              :div,
-              class: classes
-            ) do
-            buttons.each do |button|
-              concat button
-            end
+          content_tag(:div, class: classes) do
+            content
           end
-          )
         end
 
         def classes

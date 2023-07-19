@@ -11,6 +11,7 @@ module Optics
       }
 
       accepts :label
+      accepts :active, default: false
       accepts :border, default: true
       accepts :icon, default: false
       accepts :size, default: 'medium'
@@ -21,7 +22,7 @@ module Optics
         build_button do
           capture do
             concat leading_icon
-            concat label
+            concat label || content
           end
         end
       end
@@ -43,6 +44,7 @@ module Optics
           @attributes[:class],
           button_class,
           size_class,
+          'btn--active': active,
           'btn--icon': icon,
           'btn--no-border': !border
         ).join(' ')

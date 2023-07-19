@@ -3,9 +3,12 @@
 module Optics
   module Sidebar
     class Component < ApplicationViewComponent
-      renders_one :brand, 'Brand'
-      renders_many :buttons, Optics::Button::Component
+      VARIANTS = %w[drawer compact rail]
 
+      renders_one :brand, 'Brand'
+      renders_many :sidebar_contents, 'SidebarContent'
+
+      accepts :responsive, default: false
       accepts :variant, default: 'drawer'
 
       def call
@@ -15,16 +18,9 @@ module Optics
         ) do
           capture do
             concat brand
-            concat(
-              content_tag(
-                :div,
-                class: 'sidebar__content sidebar__content--center'
-              ) do
-              buttons.each do |button|
-                concat button
-              end
+            sidebar_contents.each do |content|
+              concat content
             end
-            )
           end
         end
       end
@@ -33,7 +29,8 @@ module Optics
         class_names(
           'sidebar',
           variant_class,
-          @attributes[:class]
+          @attributes[:class],
+          'sidebar--responsive': responsive
         ).join(' ')
       end
 
@@ -52,9 +49,37 @@ module Optics
         end
       end
 
-      class LinksComponent < ApplicationViewComponent
-        VARIANTS = %w[drawer compact rail]
+      class SidebarContent < ApplicationViewComponent
+        renders_many :buttons, Optics::Button::Component
 
+        accepts :position, default: 'center'
+        
+        def call
+          concat(
+            content_tag(
+              :div,
+              class: classes
+            ) do
+            buttons.each do |button|
+              concat button
+            end
+          end
+          )
+        end
+
+        def classes
+          class_names(
+            'sidebar__content',
+            position_class,
+          ).join(' ')
+        end
+
+        def position_class
+          "sidebar__content--#{position}"
+        end
+      end
+
+      class LinksComponent < ApplicationViewComponent
         accepts :image_source
         accepts :url
 

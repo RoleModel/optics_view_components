@@ -54,7 +54,7 @@ module Optics
       variant: 'default',
       url: nil
     )
-      render_with_template(locals: { active:, border:, disabled:, icon:, icon_with_label:, id:, pill:, size: })
+      render_with_template(locals: { active:, border:, disabled:, icon:, icon_with_label:, id:, pill:, size:, url: })
     end
   end
 end

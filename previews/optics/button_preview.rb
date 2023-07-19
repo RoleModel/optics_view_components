@@ -16,19 +16,20 @@ module Optics
     # @param variant select {{ Optics::Button::Component::STYLES }}
     # @param url text
     def default( # rubocop:disable Metrics/ParameterLists
-          active: false,
-          border: true,
-          disabled: false,
-          icon: false,
-          icon_with_label: false,
-          id: nil,
-          label: 'Default',
-          pill: false,
-          size: 'medium',
-          variant: 'default',
-          url: nil
-        )
-      component 'optics/button', active:, border:, disabled:, icon:, icon_with_label:, id:, label:, pill:, size:, variant:, url:
+      active: false,
+      border: true,
+      disabled: false,
+      icon: false,
+      icon_with_label: false,
+      id: nil,
+      label: 'Default',
+      pill: false,
+      size: 'medium',
+      variant: 'default',
+      url: nil
+    )
+      component 'optics/button', active:, border:, disabled:, icon:, icon_with_label:, id:, label:, pill:, size:,
+                                 variant:, url:
     end
   end
 end

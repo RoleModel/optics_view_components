@@ -3,7 +3,7 @@
 module Optics
   module Sidebar
     class Component < ApplicationViewComponent
-      VARIANTS = %w[drawer compact rail]
+      VARIANTS = %w[drawer compact rail].freeze
 
       renders_one :brand, 'Brand'
       renders_many :sidebar_contents, 'SidebarContent'
@@ -62,7 +62,7 @@ module Optics
         def classes
           class_names(
             'sidebar__content',
-            position_class,
+            position_class
           ).join(' ')
         end
 

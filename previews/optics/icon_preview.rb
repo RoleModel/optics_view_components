@@ -11,13 +11,13 @@ module Optics
     # @param title
     # @param weight select {{ Optics::Icon::Component::WEIGHTS }}
     def default( # rubocop:disable Metrics/ParameterLists
-          emphasis: 'normal',
-          filled: false,
-          name: 'settings',
-          size: 'normal',
-          title: nil,
-          weight: 'normal'
-        )
+      emphasis: 'normal',
+      filled: false,
+      name: 'settings',
+      size: 'normal',
+      title: nil,
+      weight: 'normal'
+    )
       component('optics/icon', emphasis:, filled:, name:, size:, title:, weight:)
     end
   end

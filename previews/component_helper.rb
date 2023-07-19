@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ApplicationHelper
+module ComponentHelper
   def component(name, *args, **kwargs, &)
     render(name.camelize.constantize::Component.new(*args, **kwargs), &)
   end

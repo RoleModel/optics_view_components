@@ -3,7 +3,7 @@
 module Optics
   module Sidebar
     class Component < ApplicationViewComponent
-      VARIANTS = %w[drawer compact rail]
+      VARIANTS = %w[drawer compact rail].freeze
 
       renders_one :brand, 'Brand'
       renders_many :sidebar_contents, 'SidebarContent'
@@ -40,37 +40,29 @@ module Optics
 
       class Brand < ApplicationViewComponent
         accepts :url
-        accepts :image_source
+        accepts :img_src
+        accepts :name
 
         def call
           link_to(url, class: 'sidebar__brand') do
-            image_tag(image_source)
+            name || image_tag(img_src)
           end
         end
       end
 
       class SidebarContent < ApplicationViewComponent
-        renders_many :buttons, Optics::Button::Component
-
         accepts :position, default: 'center'
-        
+
         def call
-          concat(
-            content_tag(
-              :div,
-              class: classes
-            ) do
-            buttons.each do |button|
-              concat button
-            end
+          content_tag(:div, class: classes) do
+            content
           end
-          )
         end
 
         def classes
           class_names(
             'sidebar__content',
-            position_class,
+            position_class
           ).join(' ')
         end
 
@@ -80,12 +72,12 @@ module Optics
       end
 
       class LinksComponent < ApplicationViewComponent
-        accepts :image_source
+        accepts :img_src
         accepts :url
 
         def call
           link_to(url, class: 'sidebar__brand') do
-            image_tag(image_source)
+            image_tag(img_src)
           end
         end
       end

@@ -6,30 +6,27 @@ module Optics
       SIZES = %w[small medium large].freeze
       STYLES = %w[default primary secondary delete].freeze
 
-      renders_one :leading_icon, lambda { |name:, size: 'normal'|
-        Optics::Icon::Component.new(name:, size:)
-      }
-
       accepts :label
+      accepts :active, default: false
       accepts :border, default: true
+      accepts :disabled, default: false
       accepts :icon, default: false
+      accepts :icon_with_label, default: false
+      accepts :pill, default: false
       accepts :size, default: 'medium'
       accepts :variant, default: 'default'
       accepts :url
 
       def call
         build_button do
-          capture do
-            concat leading_icon
-            concat label
-          end
+          content || label
         end
       end
 
       def build_button(&)
-        return link_to(url, class: classes, **@attributes.except(:class), &) if url
+        return link_to(url, class: classes, **@attributes.except(:class), &) if url && !disabled
 
-        tag.button(class: classes, **@attributes.except(:class), &)
+        tag.button(class: classes, disabled:, **@attributes.except(:class), &)
       end
 
       def button_class
@@ -43,8 +40,12 @@ module Optics
           @attributes[:class],
           button_class,
           size_class,
+          'btn--active': active,
+          'btn--disabled': disabled,
           'btn--icon': icon,
-          'btn--no-border': !border
+          'btn--icon-with-label': icon_with_label,
+          'btn--no-border': !border,
+          'btn--pill': pill
         ).join(' ')
       end
 

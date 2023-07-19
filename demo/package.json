@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "@rolemodel/optics": "^0.3.1",
-    "sass": "^1.62.1"
+    "@rolemodel/optics": "^0.4.2",
+    "sass": "^1.63.6"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"

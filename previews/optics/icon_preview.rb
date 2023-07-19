@@ -2,6 +2,8 @@
 
 module Optics
   class IconPreview < ViewComponent::Preview
+    include ComponentHelper
+
     # @param emphasis select {{ Optics::Icon::Component::EMPHASES }}
     # @param filled toggle
     # @param name
@@ -9,23 +11,14 @@ module Optics
     # @param title
     # @param weight select {{ Optics::Icon::Component::WEIGHTS }}
     def default( # rubocop:disable Metrics/ParameterLists
-          emphasis: 'normal',
-          filled: false,
-          name: 'settings',
-          size: 'normal',
-          title: nil,
-          weight: 'normal'
-        )
-      render(
-        Optics::Icon::Component.new(
-          emphasis:,
-          filled:,
-          name:,
-          size:,
-          title:,
-          weight:
-        )
-      )
+      emphasis: 'normal',
+      filled: false,
+      name: 'settings',
+      size: 'normal',
+      title: nil,
+      weight: 'normal'
+    )
+      component('optics/icon', emphasis:, filled:, name:, size:, title:, weight:)
     end
   end
 end

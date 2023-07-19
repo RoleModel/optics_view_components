@@ -40,12 +40,12 @@ module Optics
 
       class Brand < ApplicationViewComponent
         accepts :url
-        accepts :image_source
+        accepts :img_src
         accepts :name
 
         def call
           link_to(url, class: 'sidebar__brand') do
-            name || image_tag(image_source)
+            name || image_tag(img_src)
           end
         end
       end
@@ -72,12 +72,12 @@ module Optics
       end
 
       class LinksComponent < ApplicationViewComponent
-        accepts :image_source
+        accepts :img_src
         accepts :url
 
         def call
           link_to(url, class: 'sidebar__brand') do
-            image_tag(image_source)
+            image_tag(img_src)
           end
         end
       end

@@ -16,7 +16,7 @@ module Optics
     def default( # rubocop:disable Metrics/ParameterLists
           active: false,
           border: true,
-          disabled: true,
+          disabled: false,
           icon: false,
           id: nil,
           label: 'Default',

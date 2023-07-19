@@ -2,6 +2,8 @@
 
 module Optics
   class IconPreview < ViewComponent::Preview
+    include ComponentHelper
+
     # @param emphasis select {{ Optics::Icon::Component::EMPHASES }}
     # @param filled toggle
     # @param name
@@ -16,16 +18,7 @@ module Optics
           title: nil,
           weight: 'normal'
         )
-      render(
-        Optics::Icon::Component.new(
-          emphasis:,
-          filled:,
-          name:,
-          size:,
-          title:,
-          weight:
-        )
-      )
+      component('optics/icon', emphasis:, filled:, name:, size:, title:, weight:)
     end
   end
 end

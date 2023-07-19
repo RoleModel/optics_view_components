@@ -2,7 +2,11 @@
 
 module Optics
   class ButtonPreview < ViewComponent::Preview
+    include ComponentHelper
+
+    # @param active toggle
     # @param border toggle
+    # @param disabled toggle
     # @param icon toggle
     # @param id text
     # @param label text
@@ -10,23 +14,17 @@ module Optics
     # @param variant select {{ Optics::Button::Component::STYLES }}
     # @param url text
     def default( # rubocop:disable Metrics/ParameterLists
+          active: false,
           border: true,
+          disabled: true,
           icon: false,
           id: nil,
           label: 'Default',
-          size: 'normal',
+          size: 'medium',
           variant: 'default',
           url: nil
         )
-      render(Optics::Button::Component.new(
-               border:,
-               icon:,
-               id:,
-               label:,
-               size:,
-               variant:,
-               url:
-             ))
+      component 'optics/button', active:, border:, disabled:, icon:, id:, label:, size:, variant:, url:
     end
   end
 end

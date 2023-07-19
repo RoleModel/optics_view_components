@@ -13,6 +13,7 @@ module Optics
       accepts :label
       accepts :active, default: false
       accepts :border, default: true
+      accepts :disabled, default: false
       accepts :icon, default: false
       accepts :size, default: 'medium'
       accepts :variant, default: 'default'
@@ -28,9 +29,9 @@ module Optics
       end
 
       def build_button(&)
-        return link_to(url, class: classes, **@attributes.except(:class), &) if url
+        return link_to(url, class: classes, **@attributes.except(:class), &) if url && !disabled
 
-        tag.button(class: classes, **@attributes.except(:class), &)
+        tag.button(class: classes, disabled:, **@attributes.except(:class), &)
       end
 
       def button_class
@@ -45,6 +46,7 @@ module Optics
           button_class,
           size_class,
           'btn--active': active,
+          'btn--disabled': disabled,
           'btn--icon': icon,
           'btn--no-border': !border
         ).join(' ')

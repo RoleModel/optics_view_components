@@ -38,6 +38,11 @@ Add to `config/application.rb`:
     config.view_component.preview_paths << Optics::ViewComponents::Engine.root.join('previews')
 ```
 
+If you need a custom layout add:
+```
+    config.view_component.default_preview_layout = 'preview'
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -1,7 +1,5 @@
-GIT
-  remote: https://github.com/rolemodel/optics_view_components.git
-  revision: efa5877f868f3bea5a9f4584d6223bef0e90aebc
-  branch: master
+PATH
+  remote: ..
   specs:
     optics_view_components (0.1.8)
       view_component (> 2.0, < 4.0)

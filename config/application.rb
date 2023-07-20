@@ -13,7 +13,6 @@ require 'rails/test_unit/railtie'
 require 'sprockets/railtie'
 
 require 'view_component'
-require 'optics/view_components'
 require 'optics/view_components/engine'
 
 # Require the gems listed in Gemfile, including any gems
@@ -24,6 +23,11 @@ module Demo
   class Application < Rails::Application
     config.load_defaults 7.0
 
+    if config.respond_to?(:lookbook)
+      config.lookbook.component_paths << Optics::ViewComponents::Engine.root.join('app/components')
+    end
+
+    config.view_component.preview_paths << Optics::ViewComponents::Engine.root.join('previews')
     config.view_component.default_preview_layout = 'preview'
     config.view_component.preview_paths << Rails.root.join('..', 'previews')
     config.lookbook.project_name = "Optics ViewComponents v#{Optics::ViewComponents::VERSION}"

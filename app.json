@@ -1,0 +1,14 @@
+{
+  "name": "Optics View Components",
+  "scripts": {
+    "heroku-prebuild": "cd demo && bundle install && yarn install"
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}

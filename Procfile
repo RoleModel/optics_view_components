@@ -1,1 +1,1 @@
-web: cd demo; bundle; bin/rails s -p ${PORT:-5000} -e $RAILS_ENV
+web: cd demo && bundle && bin/rails s -p ${PORT:-5000} -e $RAILS_ENV

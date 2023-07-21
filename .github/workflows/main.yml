@@ -19,3 +19,4 @@ jobs:
           heroku_app_name:  optics-view-components
           heroku_email: it-support@rolemodelsoftware.com
           appdir: demo
+          procfile: "web: rails start"

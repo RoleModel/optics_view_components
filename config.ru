@@ -1,3 +1,3 @@
-require 'demo/config/environment'
+require './demo/config/environment'
 run Demo::Application
 

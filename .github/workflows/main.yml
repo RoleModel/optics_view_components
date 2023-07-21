@@ -17,3 +17,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name:  optics-view-components
           heroku_email: it-support@rolemodelsoftware.com
+          appdir: demo

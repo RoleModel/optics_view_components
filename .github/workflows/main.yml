@@ -1,4 +1,4 @@
-name: Ruby
+name: Deploy
 
 on:
   push:
@@ -10,28 +10,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
-    strategy:
-      matrix:
-        ruby:
-          - '3.2.2'
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 19
-        cache-dependency-path: 'demo/yarn.lock'
-    - name: Build assets
-      run: |
-        cd demo
-        yarn
-        yarn build:css
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name:  optics-view-components
+          heroku_email: it-support@rolemodelsoftware.com

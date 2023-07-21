@@ -5,7 +5,7 @@ require_relative 'lib/optics/view_components/version'
 Gem::Specification.new do |spec|
   spec.name = 'optics_view_components'
   spec.version = Optics::ViewComponents::VERSION
-  spec.authors = ['Reed Law']
+  spec.authors = ['Reed Law', 'Wes Rich', 'Jeremy Walton']
   spec.email = ['reed.law@rolemodelsoftware.com']
 
   spec.summary = 'ViewComponents for the Optics Design System'

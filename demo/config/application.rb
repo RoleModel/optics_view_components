@@ -25,8 +25,9 @@ module Demo
     config.load_defaults 7.0
 
     config.view_component.default_preview_layout = 'preview'
-    config.view_component.preview_paths << Rails.root.join('..', 'previews')
+    config.view_component.preview_paths = [Optics::ViewComponents::Engine.root.join('previews')]
     config.lookbook.project_name = "Optics ViewComponents v#{Optics::ViewComponents::VERSION}"
     config.lookbook.component_paths = [Optics::ViewComponents::Engine.root.join('app', 'components')]
+    config.view_component.show_previews = true
   end
 end

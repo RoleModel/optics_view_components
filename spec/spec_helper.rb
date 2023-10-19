@@ -5,6 +5,19 @@ require File.expand_path('../demo/config/environment', __dir__)
 
 require 'pry'
 require 'rspec/rails'
+require 'simplecov'
+require 'simplecov-lcov'
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+SimpleCov.start do
+  formatter SimpleCov::Formatter::MultiFormatter.new([
+    SimpleCov::Formatter::LcovFormatter,
+    SimpleCov::Formatter::SimpleFormatter,
+    SimpleCov::Formatter::HTMLFormatter,
+  ])
+  add_filter(%r{^/spec/}) # For RSpec
+  add_filter(%r{^/config/}) # Skip config files
+  enable_coverage(:branch) # Report branch coverage to trigger branch-level undercover warnings
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

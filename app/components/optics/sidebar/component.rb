@@ -14,7 +14,8 @@ module Optics
       def call
         content_tag(
           :nav,
-          class: classes
+          class: classes,
+          **@attributes.except(:class)
         ) do
           capture do
             concat brand
@@ -45,7 +46,7 @@ module Optics
         accepts :name
 
         def call
-          link_to(url, class: 'sidebar__brand') do
+          link_to(url, class: 'sidebar__brand', **@attributes) do
             name || image_tag(image_source, alt: image_label)
           end
         end
@@ -55,7 +56,7 @@ module Optics
         accepts :position, default: 'center'
 
         def call
-          content_tag(:div, class: classes) do
+          content_tag(:div, class: classes, **@attributes) do
             content
           end
         end
@@ -63,7 +64,8 @@ module Optics
         def classes
           class_names(
             'sidebar__content',
-            position_class
+            position_class,
+            @attributes[:class]
           ).join(' ')
         end
 
@@ -77,7 +79,7 @@ module Optics
         accepts :url
 
         def call
-          link_to(url, class: 'sidebar__brand') do
+          link_to(url, class: 'sidebar__brand', **@attributes) do
             image_tag(img_src)
           end
         end

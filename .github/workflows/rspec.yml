@@ -1,0 +1,36 @@
+name: "RSpec"
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+    steps:
+      - name: update
+        run: sudo apt-get update
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Fetch all commits in PR branch
+        run: |
+          commits=${{ github.event.pull_request.commits }}
+          if [[ -n "$commits" ]]; then
+            # Prepare enough depth for diffs with master
+            git fetch --depth="$(( commits + 1 ))"
+          fi
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run tests
+        run: bin/rspec
+      - name: Check code coverage
+        run: bin/pronto run --formatters github_pr --commit origin/master --runner undercover
+        env:
+          PRONTO_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}

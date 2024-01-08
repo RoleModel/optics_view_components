@@ -12,7 +12,7 @@ gem 'lookbook'
 gem 'pronto'
 gem 'pronto-reek', require: false
 gem 'pronto-undercover', require: false
-gem 'puma', '~> 6.3'
+gem 'puma', '~> 6.4'
 gem 'rake', '~> 13.0'
 gem 'rspec', '~> 3.0'
 gem 'rubocop', '~> 1.21'
